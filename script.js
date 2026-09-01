@@ -8,6 +8,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const noBtn = document.getElementById('noBtn');
   const successText = document.getElementById('successText');
   const choiceBox = document.getElementById('choiceBox');
+  const confettiLayer = document.getElementById('confettiLayer');
+
+  const createConfetti = () => {
+    if (!confettiLayer) return;
+
+    const colors = ['#111111', '#d8b4a0', '#f6d365', '#fda4af', '#c4b5fd', '#86efac', '#fbbf24', '#a7f3d0'];
+
+    for (let i = 0; i < 180; i++) {
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.style.left = '50%';
+      piece.style.top = '50%';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.setProperty('--dx', `${(Math.random() - 0.5) * 900}px`);
+      piece.style.setProperty('--dy', `${(Math.random() - 0.5) * 900}px`);
+      piece.style.setProperty('--rot', `${Math.random() * 720 - 360}deg`);
+      piece.style.animationDuration = `${1.8 + Math.random() * 1.2}s`;
+      confettiLayer.appendChild(piece);
+
+      setTimeout(() => piece.remove(), 3500);
+    }
+  };
 
   if (yesBtn && noBtn && successText && choiceBox) {
     const moveNoButton = () => {
@@ -40,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     yesBtn.addEventListener('click', () => {
+      createConfetti();
       successText.textContent = 'Oui… je savais que tu me pardonnerais 😌';
       yesBtn.textContent = 'Oui, toujours ❤️';
       yesBtn.disabled = true;
