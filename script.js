@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     yesBtn.addEventListener('click', () => {
       createConfetti();
-      successText.textContent = 'Oui… je savais que tu me pardonnerais 😌';
-      yesBtn.textContent = 'Merci ❤️';
+      successText.textContent = 'Merci… je savais que tu me pardonnerais 🥹';
+      yesBtn.textContent = 'Oui❤️';
       yesBtn.disabled = true;
       noBtn.style.display = 'none';
     });
